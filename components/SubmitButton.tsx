@@ -1,7 +1,7 @@
 "use client"
-import React from 'react';
 import Image from 'next/image';
 import {Button} from "@/components/ui/button";
+import React from "react";
 
 interface ButtonProps {
     isLoading: boolean,
@@ -11,7 +11,11 @@ interface ButtonProps {
 
 function SubmitButton({isLoading, className, children}: ButtonProps) {
     return (
-        <Button type="submit" disabled={isLoading} className={className ?? 'shad-primary-btn w-full'}>
+        <Button
+            type="submit"
+            disabled={isLoading}
+            className={className ?? 'shad-primary-btn w-full'}
+        >
             {isLoading ? (
                 <div className="flex items-center gap-4">
                     <Image
@@ -23,9 +27,11 @@ function SubmitButton({isLoading, className, children}: ButtonProps) {
                     />
                     Submitting...
                 </div>
-            ) : (children) }
+            ) : (
+                children
+            )}
         </Button>
     );
-}
+};
 
 export default SubmitButton;

@@ -5,7 +5,12 @@ import Link from "next/link";
 import RegisterForm from "@/components/forms/RegisterForm";
 import {getUser} from "@/lib/actions/patient.actions";
 
-const Register = async ({ params: { userId } }: SearchParamProps) => {
+const Register = async (props: SearchParamProps) => {
+    const params = await props.params;
+
+    const {
+        userId
+    } = params;
 
     const user = await getUser(userId);
 
