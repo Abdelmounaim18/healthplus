@@ -10,16 +10,17 @@ export default function Home() {
       {/*  TODO: OTP Verification | PasskeyModal */}
 
       <section className="remove-scrollbar container my-auto">
-          <div className="sub-container max-w-[4096px]">
-              {/*<Image*/}
-              {/*    src="/assets/icons/logo-full.svg"*/}
-              {/*    height={1000}*/}
-              {/*    width={1000}*/}
-              {/*    alt="patient"*/}
-              {/*    className="mb-12 h-10 w-fit"*/}
-              {/*/>*/}
-
-              <h1 className="header mb-12 h-10 w-fit">⚕️ HealthPlus</h1>
+          <div className="sub-container max-w-[496px]">
+              <div className="flex items-center space-x-4 mb-20">
+                  <Image
+                      src="/assets/icons/icon.png"
+                      height={1000}
+                      width={1000}
+                      alt="patient"
+                      className="h-10 w-fit rounded-xl"
+                  />
+                  <h1 className="header text-lg font-semibold">HealthPlus</h1>
+              </div>
 
               <PatientForm/>
 

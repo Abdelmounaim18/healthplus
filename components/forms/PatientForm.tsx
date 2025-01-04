@@ -25,7 +25,7 @@ export enum FormFieldType {
 }
 
 
-const PatientForm = () => {
+export const PatientForm = () => {
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(false)
 
@@ -44,7 +44,7 @@ const PatientForm = () => {
 
         try {
             const userData = { name, email, phone };
-            console.error(userData)
+            console.log(userData, 'try-block')
             const user = await createUser(userData)
 
             if(user) {
@@ -56,6 +56,7 @@ const PatientForm = () => {
             console.log(error)
         }
     }
+
 
     return (
         <Form {...form}>
