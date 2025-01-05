@@ -99,9 +99,7 @@ const RegisterForm = ({user}: {user: User}) => {
             >
                 <section className="mb-12 space-y-4 ">
                     <h1 className="header">{greeting}, {user.name}</h1>
-                    <p className="text-dark-700">We’re here to help!<br/> Let us know more about yourself so we can
-                        support
-                        you better.</p>
+                    <p className="text-dark-700">We’d like to learn more about you to provide the best care possible.</p>
                 </section>
 
                 <Separator className="bg-dark-700"/>
@@ -363,7 +361,7 @@ const RegisterForm = ({user}: {user: User}) => {
                 </section>
 
 
-                <SubmitButton isLoading={isLoading}>Submit and Continue</SubmitButton>
+                <SubmitButton isLoading={isLoading}>Continue</SubmitButton>
             </form>
         </Form>
     )

@@ -82,7 +82,9 @@ const RenderField = ({field, props}: { field: any; props:CustomProps }) => {
                             showTimeSelect={showTimeSelect ?? false}
                             timeInputLabel="Time:"
                             wrapperClassName="date-picker"
-                            placeholderText="01-01-1901"
+                            placeholderText="Select date"
+                            calendarStartDay={1}
+                            timeFormat="HH:mm"
                         />
 
                     </FormControl>

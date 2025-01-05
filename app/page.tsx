@@ -19,7 +19,7 @@ export default function Home() {
                       alt="patient"
                       className="h-10 w-fit rounded-xl"
                   />
-                  <h1 className="header text-lg font-semibold">HealthPlus</h1>
+                  <h1 className="header font-semibold">HealthPlus</h1>
               </div>
 
               <PatientForm/>
