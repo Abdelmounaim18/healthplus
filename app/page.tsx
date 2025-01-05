@@ -2,43 +2,44 @@ import Image from "next/image";
 import {Button} from "@/components/ui/button";
 import PatientForm from "@/components/forms/PatientForm";
 import Link from "next/link";
+import PasskeyModal from "@/components/PasskeyModal";
+import LogoHeader from "@/components/LogoHeader";
 
-export default function Home() {
-  return (
-    <div className="flex h-screen max-h-screen">
+export default async function Home(props: SearchParamProps) {
+    const searchParams = await props.searchParams;
 
-      {/*  TODO: OTP Verification | PasskeyModal */}
+    const isAdmin = searchParams.admin === "true";
 
-      <section className="remove-scrollbar container my-auto">
-          <div className="sub-container max-w-[496px]">
-              <div className="flex items-center space-x-4 mb-20">
-                  <Image
-                      src="/assets/icons/icon.png"
-                      height={1000}
-                      width={1000}
-                      alt="patient"
-                      className="h-10 w-fit rounded-xl"
-                  />
-                  <h1 className="header font-semibold">HealthPlus</h1>
-              </div>
+    return (
+      <div className="flex h-screen max-h-screen">
 
-              <PatientForm/>
+         {isAdmin && <PasskeyModal/>}
 
-              <div className="text-14-regular mt-20 flex justify-between">
-                  <p className="justify-items-end text-dark-600 xl:text-left">© 2025 Abdelmounaim</p>
-                  <Link href="/?admin=true" className="text-green-500">
-                      Admin
-                  </Link>
-              </div>
-          </div>
-      </section>
-        <Image
-            src="/assets/images/onboarding-image.png"
-            height={1000}
-            width={1000}
-        alt="patient"
-        className="side-img max-w-[50%]"
-        />
-    </div>
-  );
+        <section className="remove-scrollbar container my-auto">
+            <div className="sub-container max-w-[496px]">
+                <LogoHeader className="mb-20" />
+
+                <PatientForm/>
+
+                <p className="text-14-regular text-dark-600 mt-6 text-center">
+                  By signing up, you agree to our Terms of Service and Privacy Policy. Your health information will be handled in accordance with HIPAA guidelines.
+                </p>
+
+                <div className="text-14-regular mt-20 flex justify-between">
+                    <p className="justify-items-end text-dark-600 xl:text-left">© 2025 Abdelmounaim</p>
+                    <Link href="/?admin=true" className="text-green-500">
+                        Admin
+                    </Link>
+                </div>
+            </div>
+        </section>
+          <Image
+              src="/assets/images/onboarding-image.png"
+              height={1000}
+              width={1000}
+          alt="patient"
+          className="side-img max-w-[50%]"
+          />
+      </div>
+    );
 }

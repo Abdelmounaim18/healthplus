@@ -10,17 +10,20 @@ import SubmitButton from "@/components/SubmitButton";
 import {useState} from "react";
 import {getAppointmentSchema} from "@/lib/validation"
 import {useRouter} from "next/navigation";
-import {createUser} from "@/lib/actions/patient.actions";
+import {createUser, getPatient} from "@/lib/actions/patient.actions";
 import {FormFieldType} from "@/components/forms/PatientForm";
 import {Doctors} from "@/constants";
 import {SelectItem} from "@/components/ui/select";
 import Image from "next/image";
 import {createAppointment} from "@/lib/actions/appointment.actions";
+import { Patient } from "@/types/appwrite.types"
+import { Separator } from "../ui/separator"
 
 
 export const AppointmentForm = (
-    {userId, patientId, type}: {
+    {userId, patientId, type, patient}: {
         userId: string,
+        patient: Patient,
         patientId: string,
         type: "create" | "cancel" | "schedule";
 }
@@ -96,6 +99,7 @@ export const AppointmentForm = (
     }
 
 
+
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 flex-1">
@@ -103,6 +107,31 @@ export const AppointmentForm = (
                     <h1 className="header">Schedule Appointment</h1>
                     <p className="text-dark-700">Let us know your preferred time and date to schedule your appointment.</p>
                 </section>
+
+                <div className="space-y-4 rounded-lg border border-dark-100 p-4">
+                    <h3 className="font-bold">Patient Information</h3>
+                    <div className="flex items-center gap-4">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-full">
+                            <Image
+                                src="/assets/icons/user.svg"
+                                alt="Patient"
+                                height={24}
+                                width={24}
+                                className="opacity-70"
+                            />
+                        </div>
+                        <div className="flex items-center gap-12">
+                            <div className="flex-1 space-y-1">
+                                <p className="font-medium">{patient.name}</p>
+                                <p className="text-sm text-dark-700">INS#{patient.insurancePolicyNumber}</p>
+                            </div>
+                            <div className="space-y-1 text-sm text-dark-700">
+                                <p>{patient.email}</p>
+                                <p>{patient.phone}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 {type !== "cancel" && (
                     <>
