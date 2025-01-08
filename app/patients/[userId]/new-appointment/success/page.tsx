@@ -23,9 +23,9 @@ const Success = async (props: SearchParamProps) => {
 	return (
 		<div className="flex h-screen max-h-screen px-[5%]">
 			<div className="success-img">
-				<Link href="/">
+				
 					<LogoHeader className="h-10 w-fit" />
-				</Link>
+				
 
 				<section className="flex flex-col items-center">
 					<Image

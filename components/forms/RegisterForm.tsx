@@ -19,17 +19,8 @@ import {Label} from "@/components/ui/label";
 import {SelectItem} from "@/components/ui/select";
 import Image from 'next/image'
 import {FileUploader} from "@/components/FileUploader";
+import Greeting from "@/components/Greeting";
 
-const getGreeting = () => {
-    const hour = new Date().getHours();
-    if (hour < 12) {
-        return "Good Morning";
-    } else if (hour < 18) {
-        return "Good Afternoon";
-    } else {
-        return "Good Evening";
-    }
-};
 
 const RegisterForm = ({user}: {user: User}) => {
     const router = useRouter();
@@ -88,8 +79,6 @@ const RegisterForm = ({user}: {user: User}) => {
 
 
 
-    const greeting = getGreeting();
-
 
     return (
         <Form {...form}>
@@ -98,7 +87,7 @@ const RegisterForm = ({user}: {user: User}) => {
                 className="flex-1 space-y-12"
             >
                 <section className="mb-12 space-y-4 ">
-                    <h1 className="header">{greeting}, {user.name}</h1>
+                    <h1 className="header">{Greeting()}, {user.name}</h1>
                     <p className="text-dark-700">We’d like to learn more about you to provide the best care possible.</p>
                 </section>
 
